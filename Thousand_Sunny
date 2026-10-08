@@ -97,6 +97,9 @@ interface vlan 99
  ip address 10.0.10.2 255.255.255.0
  no shutdown
 ip default-gateway 10.0.10.1
+interface g1/2
+ switchport mode access
+ switchport access vlan 99
 
 interface loopback0
  ip address 10.0.0.2 255.255.255.255
