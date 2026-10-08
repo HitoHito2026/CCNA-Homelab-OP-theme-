@@ -289,4 +289,4 @@ do show running-config
 exit
 write
 
-##Example End. As example configurations this is just a slice of a network, focus is more on theme. ##
+##Example End. As example config it's a slice of a network, focus is more on theme. For example straw hat fleet is not yet on scene apart from having thier pool ready##
