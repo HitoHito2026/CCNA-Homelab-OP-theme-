@@ -25,7 +25,6 @@ line vty 0 15
 
 interface loopback0
  ip address 10.0.0.1 255.255.255.255
- ip ospf 10 area 0
 
 router ospf 10
  router-id 10.0.0.1
@@ -38,7 +37,8 @@ interface g0/1
  ip nat inside
  ipv6 address 2001:db8:A1::1/64
  ip ospf 10 area 0  
- ip ospf priority 0
+ ip ospf priority 100
+ ip access-list 1 in
  no shutdown
 
 ip access-list extended Nika
@@ -46,7 +46,7 @@ ip access-list extended Nika
 
 interface g0/0
  ip address 192.168.0.20 255.255.255.0
- description # Numbers used are mostly meant to tie the them together #
+ description  Numbers used are mostly meant to tie the them together 
  ip access-group Nika in
  no shutdown
  
@@ -54,7 +54,7 @@ ip dhcp excluded-address 10.0.0.1 10.0.0.10
 ip dhcp excluded-address 192.168.0.0 192.168.0.30
 ip dhcp pool SH_PC
  network 192.168.0.0 255.255.255.0
- default-router 192.168.0.29
+ default-router 192.168.0.10
  dns-server 10.10.10.10
  domain-name Strawhats.com
 
@@ -87,7 +87,6 @@ interface loopback0
 router ospf 10
  router-id 10.0.0.2
  passive-interface Loopback0
- network 10.0.0.0 0.0.0.255 area 0
  network 10.0.0.2 0.0.0.0 area 0
 
 interface range g2/11-20
@@ -109,12 +108,11 @@ username Sanji secret Vinsmoke
 
 interface loopback0
  ip address 10.0.0.3 255.255.255.255
+ ip ospf 10 area 0
 
 router ospf 10
  router-id 10.0.0.3
  passive-interface Loopback0
- network 10.0.0.0 0.0.0.255 area 0
- network 10.0.0.3 0.0.0.0 area 0
 
 vlan 30
  name Navigator
