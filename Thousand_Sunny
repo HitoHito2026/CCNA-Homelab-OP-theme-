@@ -107,7 +107,7 @@ interface loopback0
 router ospf 10
  router-id 10.0.0.2
  passive-interface Loopback0
- network 10.0.0.2 0.0.0.0 area 0
+ network 10.0.0.0 0.0.0.255 area 0
 
 interface range g2/11-20
  shutdown
@@ -144,11 +144,11 @@ line vty 0 15
 
 interface loopback0
  ip address 10.0.0.3 255.255.255.255
- ip ospf 10 area 0
 
 router ospf 10
  router-id 10.0.0.3
  passive-interface Loopback0
+ network 10.0.0.0 0.0.0.255 area 0
 
 vlan 30
  name Navigator
