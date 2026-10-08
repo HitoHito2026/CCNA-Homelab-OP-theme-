@@ -240,4 +240,4 @@ do show running-config
 exit
 write
 
-##Example End. These are just some configurations one can use and do not equate to a full network ##
+##Example End. As example configurations these are necessarily directly connected, for example vlans differ for purpose of theme. ##
