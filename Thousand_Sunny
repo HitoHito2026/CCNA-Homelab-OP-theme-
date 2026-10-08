@@ -9,7 +9,7 @@ enable secret WillofD
 username Luffy secret MonkeyD
 
 
-access-list 1 permit 10.0.0.0 0.0.0.255
+access-list 1 permit 10.0.0.0 0.0.255.255
 ip domain-name Strawhats.com
 crypto key generate rsa
 ip ssh version 2
@@ -46,21 +46,21 @@ ip access-list extended Nika
  permit ip any any
 
 interface g0/0
- ip address 192.168.10.1 255.255.255.0
+ ip address 10.0.10.1 255.255.255.0
  description  Addressing scheme mostly for theme 
  ip access-group Nika in
  ip ospf 10 area 0
  ip nat inside
  no shutdown
 
-access-list 10 permit 192.168.10.0 0.0.0.255
+access-list 10 permit 10.0.10.0 0.0.0.255
 ip nat inside source list 10 interface g0/1 overload
 
 ip dhcp excluded-address 10.0.0.1 10.0.0.10
-ip dhcp excluded-address 192.168.10.1 192.168.10.10
+ip dhcp excluded-address 10.0.10.1 10.0.10.10
 ip dhcp pool SH_PC
- network 192.168.10.0 255.255.255.0
- default-router 192.168.10.1
+ network 10.0.10.0 255.255.255.0
+ default-router 10.0.10.1
  dns-server 10.10.10.10
  domain-name Strawhats.com
 
@@ -81,7 +81,7 @@ username Zoro algorithm-type scrypt secret Wano
 ip domain-name Strawhats.com
 crypto key generate rsa
 ip ssh version 2
-access-list 1 permit 10.0.0.0 0.0.0.255
+access-list 1 permit 10.0.0.0 0.0.255.255
 line console 0
  exec-timeout 30
  logging synchronous
@@ -121,7 +121,7 @@ username Sanji secret Vinsmoke
 ip domain-name Strawhats.com
 crypto key generate rsa
 ip ssh version 2
-access-list 1 permit 10.0.0.0 0.0.0.255
+access-list 1 permit 10.0.0.0 0.0.255.255
 line console 0
  exec-timeout 30
  logging synchronous
@@ -182,7 +182,7 @@ username Nami secret Tangerine
 ip domain-name Strawhats.com
 crypto key generate rsa
 ip ssh version 2
-access-list 1 permit 10.0.0.0 0.0.0.255
+access-list 1 permit 10.0.0.0 0.0.255.255
 line console 0
  exec-timeout 30
  logging synchronous
