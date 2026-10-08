@@ -103,8 +103,9 @@ router ospf 10
 vlan 2
  name Management
 interface vlan 2
- ip address 10.0.0.2 255.255.255.0
+ ip address 10.0.0.9 255.255.255.0
  no shutdown
+ip default-gateway 192.168.10.1
 
 interface range g2/11-20
  shutdown
