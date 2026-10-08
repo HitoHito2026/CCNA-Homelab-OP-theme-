@@ -161,18 +161,18 @@ vlan 40
 vlan 50
  name Compass
 
-interface range g1/2-10
+interface range g1/1-4
  switchport mode trunk
  switchport nonegotiate
  switchport trunk native vlan 1000
- switchport trunk allowed vlan 30,70
+ switchport trunk allowed vlan 30,70,40,50
  channel-group 10 mode active
 
 interface port-channel 10
  switchport mode trunk
  switchport nonegotiate
  switchport trunk native vlan 1000
- switchport trunk allowed vlan 30,70
+ switchport trunk allowed vlan 30,70,40,50
 
 interface range g2/11-20
  shutdown
@@ -215,6 +215,14 @@ vlan 40
 vlan 50
  name Compass
 
+interface g1/1
+ description Link_to_DS1
+ switchport mode trunk
+ switchport nonegotiate
+ switchport trunk native vlan 1000
+ switchport trunk allowed vlan 40,50
+ no shutdown
+
 interface f0/1
  switchport mode access
  switchport nonegotiate
@@ -231,14 +239,14 @@ ip dhcp snooping
 ip dhcp snooping vlan 40,50
 no ip dhcp snooping information option
 
-interface range g0/1-2
+interface range g1/1-2
   ip dhcp snooping trust
 interface f0/1
  ip dhcp snooping limit rate 16
 
 ip arp inspection vlan 40,50
 ip arp inspection validate src-mac dst-mac ip
-interface range g0/1-2
+interface range g1/1-2
   ip arp inspection  trust
 
 interface range g2/11-20
