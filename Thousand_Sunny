@@ -10,7 +10,7 @@ username Luffy secret MonkeyD
 
 
 access-list 1 permit 10.0.0.0 0.0.0.255
-ip domain-name Strawhats
+ip domain-name Strawhats.com
 crypto key generate rsa
 ip ssh version 2
 line console 0
@@ -73,8 +73,13 @@ do write
 enable
 configure terminal
 hostname CS1
+enable secret Enma
 username Zoro algorithm-type scrypt secret Wano
 
+
+ip domain-name Strawhats.com
+crypto key generate rsa
+ip ssh version 2
 access-list 1 permit 10.0.0.0 0.0.0.255
 line console 0
  exec-timeout 30
@@ -97,7 +102,6 @@ router ospf 10
 interface range g2/11-20
  shutdown
 
-ip domain-name Strawhats.com
 ip name-server 10.10.10.10
 ntp server 10.10.10.100
 no cdp run
@@ -109,7 +113,22 @@ do write
 enable
 configure terminal
 hostname DS1
+enable secret Ifrit
 username Sanji secret Vinsmoke
+
+ip domain-name Strawhats.com
+crypto key generate rsa
+ip ssh version 2
+access-list 1 permit 10.0.0.0 0.0.0.255
+line console 0
+ exec-timeout 30
+ logging synchronous
+ login local
+line vty 0 15
+ transport input ssh
+ login local
+ access-class 1 in
+ logging synchronous
 
 interface loopback0
  ip address 10.0.0.3 255.255.255.255
@@ -139,17 +158,6 @@ interface port-channel 10
  switchport trunk native vlan 1000
  switchport trunk allowed vlan 30,70
 
-access-list 1 permit 10.0.0.0 0.0.0.255
-line console 0
- exec-timeout 30
- logging synchronous
- login local
-line vty 0 15
- transport input ssh
- login local
- access-class 1 in
- logging synchronous
-
 interface range g2/11-20
  shutdown
 
@@ -165,8 +173,12 @@ do write
 enable
 configure terminal
 hostname AS1
+enable secret Zeus
 username Nami secret Tangerine
 
+ip domain-name Strawhats.com
+crypto key generate rsa
+ip ssh version 2
 access-list 1 permit 10.0.0.0 0.0.0.255
 line console 0
  exec-timeout 30
@@ -218,7 +230,6 @@ interface range g0/1-2
 interface range g2/11-20
  shutdown
 
-ip domain-name Strawhats
 ip name-server 10.10.10.10
 ntp server 10.10.10.100
 no cdp run
