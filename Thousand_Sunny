@@ -6,12 +6,13 @@ enable
 configure terminal
 hostname Thousand_Sunny
 enable secret WillofD
-username Luffy secret Monkey D
+username Luffy secret MonkeyD
 
 
 access-list 1 permit 10.0.0.0 0.0.0.255
 ip domain-name Strawhats
 crypto key generate rsa
+ip ssh version 2
 line console 0
  exec-timeout 30
  logging synchronous
@@ -20,10 +21,10 @@ line vty 0 15
  transport input ssh
  login local
  access-class 1 in
- logging syncronous
+ logging synchronous
 
 interface loopback0
- ip address 10.0.1.1
+ ip address 10.0.0.1 255.255.255.255
  ip ospf 10 area 0
 
 router ospf 10
@@ -33,27 +34,28 @@ router ospf 10
  network 10.0.0.1 0.0.0.0 area 0
 
 ipv6 unicast-routing
-interface G0/01
+interface g0/1
  ip address 192.168.0.10 255.255.255.252
  ip nat inside
  ipv6 address 2001:db8:A1::1/64
  ip ospf 10 area 0  
+ ip ospf priority 0
  no shutdown
 
 ip access-list extended Nika
  permit ip any any
 
 interface g0/0
- ip address 192.168.0.20
+ ip address 192.168.0.20 255.255.255.0
  description # Numbers used are mostly meant to tie the them together #
- access-group Nika in
+ ip access-group Nika in
  no shutdown
  
 ip dhcp excluded-address 10.0.0.1 10.0.0.10
 ip dhcp excluded-address 192.168.0.0 192.168.0.30
 ip dhcp pool SH_PC
  network 10.1.1.0 255.255.255.0
- default-router 10.1.0.10
+ default-router 192.168.0.29
  dns-server 10.10.10.10
  domain-name Strawhats.com
 
@@ -67,7 +69,7 @@ do write
 enable
 configure terminal
 hostname CS1
-username Zoro algorithm-type scrpyt secret Wano
+username Zoro algorithm-type scrypt secret Wano
 
 access-list 1 permit 10.0.0.0 0.0.0.255
 line console 0
@@ -78,13 +80,13 @@ line vty 0 15
  transport input ssh
  login local
  access-class 1 in
- logging syncronous
+ loggin synchronous
 
 interface loopback0
- ip address 10.0.0.2
+ ip address 10.0.0.2 255.255.255.255
 
 router ospf 10
- router-id 10.0.2.2
+ router-id 10.0.0.2
  passive-interface Loopback0
  network 10.0.2.0 0.0.0.255 area 0
  network 10.0.0.2 0.0.0.0 area 0
@@ -92,7 +94,7 @@ router ospf 10
 interface range g2/11-20
  shutdown
 
-ip domain name Strawhats.com
+ip domain-name Strawhats.com
 ip name-server 10.10.10.10
 ntp server 10.10.10.100
 no cdp run
@@ -106,6 +108,9 @@ configure terminal
 hostname DS1
 username Sanji secret Vinsmoke
 
+interface loopback0
+ ip address 10.0.0.3 255.255.255.255
+
 router ospf 10
  router-id 10.0.0.3
  passive-interface Loopback0
@@ -116,12 +121,15 @@ vlan 30
  name Navigator
 vlan 70
  name Robin
+vlan 1000
+ name NATIVE
 
 interface range g1/2-10
  switchport mode trunk
  switchport nonegotiate
  switchport trunk native vlan 1000
  switchport trunk allowed vlan 30,70
+ channel-group 10 mode active
 
 interface port-channel 10
  switchport mode trunk
@@ -143,7 +151,7 @@ line vty 0 15
 interface range g2/11-20
  shutdown
 
-ip domain name Strawhats.com
+ip domain-name Strawhats.com
 ip name-server 10.10.10.10
 ntp server 10.10.10.100
 no cdp run
@@ -166,10 +174,10 @@ line vty 0 15
  transport input ssh
  login local
  access-class 1 in
- logging syncronous
+ logging synchronous
 
 interface loopback0
- ip address 10.0.3.3
+ ip address 10.0.0.3 255.255.255.255
 
 vlan 10
  name Weather_egg
@@ -197,7 +205,7 @@ no ip dhcp snooping information option
 
 interface range g0/1-2
   ip dhcp snooping trust
-interface range f0/1
+interface f0/1
  ip dhcp snooping limit rate 16
 
 ip arp inspection vlan 10,20
@@ -208,13 +216,13 @@ interface range g0/1-2
 interface range g2/11-20
  shutdown
 
-ip domain name Strawhats
+ip domain-name Strawhats
 ip name-server 10.10.10.10
 ntp server 10.10.10.100
 no cdp run
 lldp run
 
-do show runnning-config
+do show running-config
 exit
 write
 
