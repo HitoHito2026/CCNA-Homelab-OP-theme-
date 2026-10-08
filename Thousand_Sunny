@@ -58,7 +58,7 @@ access-list 10 permit 10.0.10.0 0.0.0.255
 ip nat inside source list 10 interface g0/1 overload
 
 ip dhcp excluded-address 10.0.10.1 10.0.10.10
-ip dhcp pool SH_PC
+ip dhcp pool SHFleet_PC
  network 10.0.10.0 255.255.255.0
  default-router 10.0.10.1
  dns-server 10.10.10.10
