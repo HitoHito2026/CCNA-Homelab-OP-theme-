@@ -8,45 +8,184 @@ hostname Thousand_Sunny
 enable secret WillofD
 username Luffy secret Monkey D
 
+
+access-list 1 permit 10.0.0.0 0.0.0.255
+ip domain-name Strawhats
+crypto key generate rsa
 line console 0
  exec-timeout 30
  logging synchronous
  login local
 line vty 0 15
  transport input ssh
+ login local
+ access-class 1 in
+ logging syncronous
 
 router ospf 10
- router-id 10.0.0.10
+ router-id 10.0.0.1
  passive-interface Loopback0
  network 10.0.0.0 0.0.0.255 area 0
  network 10.0.0.1 0.0.0.0 area 0
 
-interface l0
- ip address 10.0.0.1
+interface loopback0
+ ip address 10.0.1.1
+ ip ospf 10 area 0
 
-access-list 1 permit 10.0.0.0 0.0.0.255
-
-interface G1/01
- no switchport
-
+ipv6 unicast-routing
+interface G0/01
+ ip address 192.168.0.10 255.255.255.252
+ ip nat inside
+ ipv6 address 2001:db8:A1::1/64
+ ip ospf 10 area 0  
+ no shutdown
+ 
 ip dhcp excluded-address 10.0.0.1 10.0.0.10
-ip dhcp pool A-PC
- network 10.1.0.0 255.255.255.0
+ip dhcp pool SH-PC
+ network 10.1.1.0 255.255.255.0
  default-router 10.1.0.10
  dns-server 10.10.10.10
  domain-name Strawhats.com
 
+ntp master 10
 no cdp run
 lldp run
 
 ## Core Switch Example ##
 
-ip domain name Strawhats
+enable
+configure terminal
+hostname CS1
+username Zoro algorithm-type scrpyt secret Wano
+
+line console 0
+ exec-timeout 30
+ logging synchronous
+ login local
+line vty 0 15
+ transport input ssh
+ login local
+ access-class 1 in
+ logging syncronous
+
+interface loopback0
+ ip address 10.0.0.2
+
+router ospf 10
+ router-id 10.0.2.2
+ passive-interface Loopback0
+ network 10.0.2.0 0.0.0.255 area 0
+ network 10.0.0.2 0.0.0.0 area 0
+
+
+interface range g2/11-20
+ shutdown
+
+ip domain name Strawhats.com
 ip name-server 10.10.10.10
+ntp server 10.10.10.100
+no cdp run
+lldp run
 
 ## Distribution Switch Example ##
 
+enable
+configure terminal
+hostname DS1
+username Sanji secret Vinsmoke
+
+router ospf 10
+ router-id 10.0.0.3
+ passive-interface Loopback0
+ network 10.0.3.0 0.0.0.255 area 0
+ network 10.0.0.3 0.0.0.0 area 0
+
+vlan 30
+ name Navigator
+vlan 70
+ name Robin
+
+
+
+interface range g1/2-10
+ switchport mode trunk
+ switchport nonegotiate
+ switchport trunk native vlan 1000
+ switchport trunk allowed vlan 30,70
+
+interface port-channel 10
+ switchport mode trunk
+ switchport nonegotiate
+ switchport trunk native vlan 1000
+ switchport trunk allowed vlan 30,70
+
+line console 0
+ exec-timeout 30
+ logging synchronous
+ login local
+line vty 0 15
+ transport input ssh
+ login local
+ access-class 1 in
+ logging syncronous
+
+interface range g2/11-20
+ shutdown
+
+ip domain name Strawhats.com
+ip name-server 10.10.10.10
+ntp server 10.10.10.100
+no cdp run
+lldp run
 
 ## Access Switch Example ##
 
+enable
+configure terminal
+hostname AS1
+username Nami secret Tangerine
 
+line console 0
+ exec-timeout 30
+ logging synchronous
+ login local
+line vty 0 15
+ transport input ssh
+ login local
+ access-class 1 in
+ logging syncronous
+
+interface loopback0
+ ip address 10.0.3.3
+
+router ospf 10
+ router-id 10.0.0.3
+ passive-interface Loopback0
+ network 10.0.0.3 0.0.0.255 area 0
+ network 10.0.0.3 0.0.0.0 area 0
+
+vlan 10
+ name Weather_egg
+
+vlan 20
+ name Compass
+
+interface f0/1
+ switchport mode access
+ switchport nonegotiate
+ switchport access vlan 10
+ switchport voice vlan 20
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+
+
+
+
+interface range g2/11-20
+ shutdown
+
+ip domain name Strawhats
+ip name-server 10.10.10.10
+ntp server 10.10.10.100
+no cdp run
+lldp run
