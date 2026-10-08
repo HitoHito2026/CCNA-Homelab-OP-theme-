@@ -33,12 +33,11 @@ router ospf 10
 
 ipv6 unicast-routing
 interface g0/1
- ip address 192.168.0.10 255.255.255.255
+ ip address 192.168.0.10 255.255.255.0
  ip nat inside
  ipv6 address 2001:db8:A1::1/64
  ip ospf 10 area 0  
  ip ospf priority 100
- ip access-group 1 in
  no shutdown
 
 ip access-list extended Nika
@@ -46,7 +45,7 @@ ip access-list extended Nika
 
 interface g0/0
  ip address 192.168.0.20 255.255.255.0
- description  Numbers used are mostly meant to tie the theme together 
+ description  Addressing scheme mostly for theme 
  ip access-group Nika in
  no shutdown
  
