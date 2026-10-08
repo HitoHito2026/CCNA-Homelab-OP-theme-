@@ -22,15 +22,15 @@ line vty 0 15
  access-class 1 in
  logging syncronous
 
+interface loopback0
+ ip address 10.0.1.1
+ ip ospf 10 area 0
+
 router ospf 10
  router-id 10.0.0.1
  passive-interface Loopback0
  network 10.0.0.0 0.0.0.255 area 0
  network 10.0.0.1 0.0.0.0 area 0
-
-interface loopback0
- ip address 10.0.1.1
- ip ospf 10 area 0
 
 ipv6 unicast-routing
 interface G0/01
@@ -39,9 +39,18 @@ interface G0/01
  ipv6 address 2001:db8:A1::1/64
  ip ospf 10 area 0  
  no shutdown
+
+ip access-list extended Nika
+ permit ip any any
+
+interface g0/0
+ ip address 192.168.0.20
+ access-group Nika in
+ no shutdown
  
 ip dhcp excluded-address 10.0.0.1 10.0.0.10
-ip dhcp pool SH-PC
+ip dhcp excluded-address 192.168.0.0 192.168.0.30
+ip dhcp pool SH_PC
  network 10.1.1.0 255.255.255.0
  default-router 10.1.0.10
  dns-server 10.10.10.10
@@ -58,6 +67,7 @@ configure terminal
 hostname CS1
 username Zoro algorithm-type scrpyt secret Wano
 
+access-list 1 permit 10.0.0.0 0.0.0.255
 line console 0
  exec-timeout 30
  logging synchronous
@@ -76,7 +86,6 @@ router ospf 10
  passive-interface Loopback0
  network 10.0.2.0 0.0.0.255 area 0
  network 10.0.0.2 0.0.0.0 area 0
-
 
 interface range g2/11-20
  shutdown
@@ -105,8 +114,6 @@ vlan 30
 vlan 70
  name Robin
 
-
-
 interface range g1/2-10
  switchport mode trunk
  switchport nonegotiate
@@ -119,6 +126,7 @@ interface port-channel 10
  switchport trunk native vlan 1000
  switchport trunk allowed vlan 30,70
 
+access-list 1 permit 10.0.0.0 0.0.0.255
 line console 0
  exec-timeout 30
  logging synchronous
@@ -145,6 +153,7 @@ configure terminal
 hostname AS1
 username Nami secret Tangerine
 
+access-list 1 permit 10.0.0.0 0.0.0.255
 line console 0
  exec-timeout 30
  logging synchronous
@@ -157,12 +166,6 @@ line vty 0 15
 
 interface loopback0
  ip address 10.0.3.3
-
-router ospf 10
- router-id 10.0.0.3
- passive-interface Loopback0
- network 10.0.0.3 0.0.0.255 area 0
- network 10.0.0.3 0.0.0.0 area 0
 
 vlan 10
  name Weather_egg
@@ -178,8 +181,25 @@ interface f0/1
  spanning-tree portfast
  spanning-tree bpduguard enable
 
+interface f0/1
+ switchport port-security
+ switchport port-security maximum 2
+ switchport port-security mac-address sticky
+ switchport port-security violation restrict
 
+ip dhcp snooping 
+ip dhcp snooping vlan 10,20
+no ip dhcp snooping information option
 
+interface range g0/1-2
+  ip dhcp snooping trust
+interface range f0/1
+ ip dhcp snooping limit rate 16
+
+ip arp inspection vlan 10,20
+ip arp inspection validate src-mac dst-mac ip
+interface range g0/1-2
+  ip arp inspection  trust
 
 interface range g2/11-20
  shutdown
@@ -189,3 +209,5 @@ ip name-server 10.10.10.10
 ntp server 10.10.10.100
 no cdp run
 lldp run
+
+##Example End. These are just some configurations one can use and do not equate to a full network ##
