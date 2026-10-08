@@ -34,7 +34,7 @@ router ospf 10
 ipv6 unicast-routing
 interface g0/1
  ip address 10.1.1.1 255.255.255.252
- ip nat inside
+ ip nat outside
  ipv6 address 2001:db8:A1::1/64
  ip ospf 10 area 0  
  ip ospf priority 100
@@ -48,8 +48,12 @@ interface g0/0
  description  Addressing scheme mostly for theme 
  ip access-group Nika in
  ip ospf 10 area 0
+ ip nat inside
  no shutdown
- 
+
+access-list 10 permit 192.168.10.0 0.0.0.255
+ip nat inside source list interface g0.1 overload
+
 ip dhcp excluded-address 10.0.0.1 10.0.0.10
 ip dhcp excluded-address 192.168.10.1 192.168.10.10
 ip dhcp pool SH_PC
