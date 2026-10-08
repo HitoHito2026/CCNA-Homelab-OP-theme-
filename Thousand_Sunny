@@ -51,6 +51,7 @@ interface g0/0
  ip access-group Nika in
  ip ospf 10 area 0
  ip nat inside
+ description Link_to_CS1
  no shutdown
 
 access-list 10 permit 10.0.10.0 0.0.0.255
@@ -97,9 +98,27 @@ interface vlan 99
  ip address 10.0.10.2 255.255.255.0
  no shutdown
 ip default-gateway 10.0.10.1
-interface g1/2
+interface g0/0
  switchport mode access
  switchport access vlan 99
+
+interface g1/1
+ description Link_to_Router
+ switchport mode access
+ switchport access vlan 99
+
+interface range g1/2-4
+ switchport mode trunk
+ switchport nonegotiate
+ switchport trunk native vlan 1000
+ switchport trunk allowed vlan 30,70,40,50
+ channel-group 10 mode active
+
+interface port-channel 10
+ switchport mode trunk
+ switchport nonegotiate
+ switchport trunk native vlan 1000
+ switchport trunk allowed vlan 30,70,40,50
 
 interface loopback0
  ip address 10.0.0.2 255.255.255.255
@@ -161,7 +180,15 @@ vlan 40
 vlan 50
  name Compass
 
-interface range g1/1-4
+interface g1/1
+ description Link_to_AS1
+ switchport mode trunk
+ switchport nonegotiate
+ switchport trunk native vlan 1000
+ switchport trunk allowed vlan 40,50
+ no shutdown
+
+interface range g1/2-4
  switchport mode trunk
  switchport nonegotiate
  switchport trunk native vlan 1000
@@ -262,4 +289,4 @@ do show running-config
 exit
 write
 
-##Example End. As example configurations these dont have to be directly connected, focus is more on theme. ##
+##Example End. As example configurations this is just a slice of a network, focus is more on theme. ##
