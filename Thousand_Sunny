@@ -29,6 +29,7 @@ interface loopback0
 router ospf 10
  router-id 10.0.0.1
  passive-interface Loopback0
+ passive-interface g0/0
  network 10.0.0.0 0.0.0.255 area 0
 
 ipv6 unicast-routing
@@ -52,7 +53,7 @@ interface g0/0
  no shutdown
 
 access-list 10 permit 192.168.10.0 0.0.0.255
-ip nat inside source list interface g0.1 overload
+ip nat inside source list 10 interface g0/1 overload
 
 ip dhcp excluded-address 10.0.0.1 10.0.0.10
 ip dhcp excluded-address 192.168.10.1 192.168.10.10
