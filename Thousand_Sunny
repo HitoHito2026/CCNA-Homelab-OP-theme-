@@ -106,6 +106,7 @@ ip name-server 10.10.10.10
 ntp server 10.10.10.100
 no cdp run
 lldp run
+spanning-tree mode rapid-pvst
 do write
 
 ## Distribution Switch Example ##
@@ -166,6 +167,7 @@ ip name-server 10.10.10.10
 ntp server 10.10.10.100
 no cdp run
 lldp run
+spanning-tree mode rapid-pvst
 do write
 
 ## Access Switch Example ##
@@ -206,8 +208,6 @@ interface f0/1
  switchport voice vlan 20
  spanning-tree portfast
  spanning-tree bpduguard enable
-
-interface f0/1
  switchport port-security
  switchport port-security maximum 2
  switchport port-security mac-address sticky
@@ -234,6 +234,7 @@ ip name-server 10.10.10.10
 ntp server 10.10.10.100
 no cdp run
 lldp run
+spanning-tree mode rapid-pvst
 
 do show running-config
 exit
