@@ -45,6 +45,7 @@ ip access-list extended Nika
 
 interface g0/0
  ip address 192.168.0.20
+ description # Numbers used are mostly meant to tie the them together #
  access-group Nika in
  no shutdown
  
@@ -59,6 +60,7 @@ ip dhcp pool SH_PC
 ntp master 10
 no cdp run
 lldp run
+do write
 
 ## Core Switch Example ##
 
@@ -95,6 +97,7 @@ ip name-server 10.10.10.10
 ntp server 10.10.10.100
 no cdp run
 lldp run
+do write
 
 ## Distribution Switch Example ##
 
@@ -145,6 +148,7 @@ ip name-server 10.10.10.10
 ntp server 10.10.10.100
 no cdp run
 lldp run
+do write
 
 ## Access Switch Example ##
 
@@ -209,5 +213,9 @@ ip name-server 10.10.10.10
 ntp server 10.10.10.100
 no cdp run
 lldp run
+
+do show runnning-config
+exit
+write
 
 ##Example End. These are just some configurations one can use and do not equate to a full network ##
