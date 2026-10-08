@@ -1,0 +1,52 @@
+## Example Configuration Cisco Cli ##
+
+##Example Router##
+
+enable
+configure terminal
+hostname Thousand_Sunny
+enable secret WillofD
+username Luffy secret Monkey D
+
+line console 0
+ exec-timeout 30
+ logging synchronous
+ login local
+line vty 0 15
+ transport input ssh
+
+router ospf 10
+ router-id 10.0.0.10
+ passive-interface Loopback0
+ network 10.0.0.0 0.0.0.255 area 0
+ network 10.0.0.1 0.0.0.0 area 0
+
+interface l0
+ ip address 10.0.0.1
+
+access-list 1 permit 10.0.0.0 0.0.0.255
+
+interface G1/01
+ no switchport
+
+ip dhcp excluded-address 10.0.0.1 10.0.0.10
+ip dhcp pool A-PC
+ network 10.1.0.0 255.255.255.0
+ default-router 10.1.0.10
+ dns-server 10.10.10.10
+ domain-name Strawhats.com
+
+no cdp run
+lldp run
+
+## Core Switch Example ##
+
+ip domain name Strawhats
+ip name-server 10.10.10.10
+
+## Distribution Switch Example ##
+
+
+## Access Switch Example ##
+
+
