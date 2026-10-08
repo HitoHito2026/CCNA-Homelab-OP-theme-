@@ -156,6 +156,10 @@ vlan 70
  name Robin
 vlan 1000
  name NATIVE
+vlan 40
+ name Weather_egg
+vlan 50
+ name Compass
 
 interface range g1/2-10
  switchport mode trunk
@@ -206,17 +210,16 @@ line vty 0 15
 interface loopback0
  ip address 10.0.0.4 255.255.255.255
 
-vlan 10
+vlan 40
  name Weather_egg
-
-vlan 20
+vlan 50
  name Compass
 
 interface f0/1
  switchport mode access
  switchport nonegotiate
- switchport access vlan 10
- switchport voice vlan 20
+ switchport access vlan 40
+ switchport voice vlan 50
  spanning-tree portfast
  spanning-tree bpduguard enable
  switchport port-security
@@ -225,7 +228,7 @@ interface f0/1
  switchport port-security violation restrict
 
 ip dhcp snooping 
-ip dhcp snooping vlan 10,20
+ip dhcp snooping vlan 40,50
 no ip dhcp snooping information option
 
 interface range g0/1-2
@@ -233,7 +236,7 @@ interface range g0/1-2
 interface f0/1
  ip dhcp snooping limit rate 16
 
-ip arp inspection vlan 10,20
+ip arp inspection vlan 40,50
 ip arp inspection validate src-mac dst-mac ip
 interface range g0/1-2
   ip arp inspection  trust
@@ -251,4 +254,4 @@ do show running-config
 exit
 write
 
-##Example End. As example configurations these are necessarily directly connected, for example vlans differ for purpose of theme. ##
+##Example End. As example configurations these dont have to be directly connected, focus is more on theme. ##
