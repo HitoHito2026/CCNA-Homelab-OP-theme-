@@ -117,6 +117,7 @@ ntp server 10.10.10.100
 no cdp run
 lldp run
 spanning-tree mode rapid-pvst
+spanning-tree vlan 99 root primary
 do write
 
 ## Distribution Switch Example ##
