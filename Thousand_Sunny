@@ -134,6 +134,12 @@ router ospf 10
 interface range g2/11-20
  shutdown
 
+vlan 40
+ name Weather_egg
+interface vlan 40
+ ip address 10.0.10.1 255.255.255.0
+ no shutdown
+
 ip name-server 10.10.10.10
 ntp server 10.10.10.100
 no cdp run
