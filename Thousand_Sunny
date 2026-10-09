@@ -242,6 +242,8 @@ vlan 40
  name Weather_egg
 vlan 50
  name Compass
+vlan 1000
+ name NATIVE
 
 interface g1/1
  description Link_to_DS1
