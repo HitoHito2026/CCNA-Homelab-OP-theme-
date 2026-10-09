@@ -97,7 +97,7 @@ interface g1/1
  no switchport
  ip address 10.0.1.2 255.255.255.252
  ip ospf 10 area 0
-ip route 0.0.0.0 10.0.1.1
+ip route 0.0.0.0 0.0.0.0 10.0.1.1
 
 vlan 99
  name Zoro_Directions
