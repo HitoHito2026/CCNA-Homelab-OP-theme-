@@ -46,7 +46,7 @@ ip access-list extended Nika
 
 interface g0/0
  description Link_to_CS1
- ip address 10.0.10.1 255.255.255.252
+ ip address 10.0.1.1 255.255.255.252
  ip access-group Nika in
  ip ospf 10 area 0
  ip nat inside
@@ -94,7 +94,7 @@ line vty 0 15
 vlan 99
  name Zoro_Directions
 interface vlan 99
- ip address 10.0.10.22 255.255.255.0
+ ip address 10.0.10.2 255.255.255.0
  no shutdown
 ip default-gateway 10.0.10.1
 interface g0/0
@@ -105,11 +105,8 @@ ip routing
 interface g1/1
  description Link_to_Router_ThousandSunny
  no switchport
- ip address 10.0.10.2 255.255.255.252
+ ip address 10.0.1.0 255.255.255.252
  ip ospf 10 area 0
-
- switchport mode access
- switchport access vlan 99
 
 vlan 1000
  name NATIVE
