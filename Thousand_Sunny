@@ -1,4 +1,4 @@
-## Example Configuration Cisco CLI ##
+## Example Configuration Cisco CLI. Addressing scheme thematic ##
 
 ##Example Router##
 
@@ -47,7 +47,6 @@ ip access-list extended Nika
 interface g0/0
  description Link_to_CS1
  ip address 10.0.10.1 255.255.255.0
- description  Addressing scheme mostly for theme 
  ip access-group Nika in
  ip ospf 10 area 0
  ip nat inside
