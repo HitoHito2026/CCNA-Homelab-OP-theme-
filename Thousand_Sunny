@@ -38,7 +38,6 @@ interface g0/1
  ip nat outside
  ipv6 address 2001:db8:A1::1/64
  ip ospf 10 area 0  
- ip ospf priority 100
  no shutdown
 
 ip access-list extended Nika
@@ -46,12 +45,13 @@ ip access-list extended Nika
  permit ip any any
 
 interface g0/0
+ description Link_to_CS1
  ip address 10.0.10.1 255.255.255.0
  description  Addressing scheme mostly for theme 
  ip access-group Nika in
  ip ospf 10 area 0
  ip nat inside
- description Link_to_CS1
+ ip ospf priority 100
  no shutdown
 
 access-list 10 permit 10.0.10.0 0.0.0.255
