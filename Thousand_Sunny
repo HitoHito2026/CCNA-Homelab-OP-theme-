@@ -29,7 +29,7 @@ interface loopback0
 router ospf 10
  router-id 10.0.0.1
  passive-interface Loopback0
- passive-interface g0/0
+ passive-interface g0/1
  network 10.0.0.0 0.0.0.255 area 0
 
 ipv6 unicast-routing
