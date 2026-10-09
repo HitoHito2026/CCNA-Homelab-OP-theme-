@@ -268,14 +268,14 @@ ip dhcp snooping
 ip dhcp snooping vlan 40,50
 no ip dhcp snooping information option
 
-interface range g1/1-2
+interface range g1/1
   ip dhcp snooping trust
 interface f0/1
  ip dhcp snooping limit rate 16
 
 ip arp inspection vlan 40,50
 ip arp inspection validate src-mac dst-mac ip
-interface range g1/1-2
+interface range g1/1
   ip arp inspection  trust
 
 interface range g2/11-20
