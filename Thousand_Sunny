@@ -53,11 +53,6 @@ interface g0/0
  ip ospf priority 100
  no shutdown
 
-interface g0/0.10
- encapsulation dot1Q 10
- ip address 10.0.10.1 255.255.255.0
- ip nat inside
-
 access-list 10 permit 10.0.10.0 0.0.0.255
 ip nat inside source list 10 interface g0/1 overload
 
