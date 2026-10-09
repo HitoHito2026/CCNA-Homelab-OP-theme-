@@ -4,7 +4,7 @@
 
 enable
 configure terminal
-hostname Thousand_Sunny
+hostname ThousandSunny
 enable secret WillofD
 username Luffy secret MonkeyD
 
@@ -46,7 +46,7 @@ ip access-list extended Nika
 
 interface g0/0
  description Link_to_CS1
- ip address 10.0.10.1 255.255.255.0
+ ip address 10.0.10.1 255.255.255.252
  ip access-group Nika in
  ip ospf 10 area 0
  ip nat inside
@@ -101,8 +101,13 @@ interface g0/0
  switchport mode access
  switchport access vlan 99
 
+ip routing
 interface g1/1
- description Link_to_Router
+ description Link_to_Router_ThousandSunny
+ no switchport
+ ip address 10.0.10.2 255.255.255.252
+ ip ospf 10 area 0
+
  switchport mode access
  switchport access vlan 99
 
