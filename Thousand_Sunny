@@ -109,7 +109,6 @@ interface g1/1
 
 vlan 1000
  name NATIVE
-
 interface range g1/2-4
  switchport mode trunk
  switchport nonegotiate
