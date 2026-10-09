@@ -91,22 +91,22 @@ line vty 0 15
  access-class 1 in
  logging synchronous
 
-vlan 99
- name Zoro_Directions
-interface vlan 99
- ip address 10.0.99.2 255.255.255.0
- no shutdown
-ip default-gateway 10.0.10.1
-interface g0/0
- switchport mode access
- switchport access vlan 99
-
 ip routing
 interface g1/1
  description Link_to_Router_ThousandSunny
  no switchport
  ip address 10.0.1.2 255.255.255.252
  ip ospf 10 area 0
+ip route 0.0.0.0 10.0.1.1
+
+vlan 99
+ name Zoro_Directions
+interface vlan 99
+ ip address 10.0.99.1 255.255.255.0
+ no shutdown
+interface g0/0
+ switchport mode access
+ switchport access vlan 99
 
 vlan 1000
  name NATIVE
