@@ -103,6 +103,7 @@ vlan 99
  name Zoro_Directions
 interface vlan 99
  ip address 10.0.99.1 255.255.255.0
+ ip ospf 10 area 0
  no shutdown
 interface g0/0
  switchport mode access
