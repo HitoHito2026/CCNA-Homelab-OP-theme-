@@ -140,7 +140,10 @@ vlan 40
 interface vlan 40
  ip address 10.0.10.1 255.255.255.0
  ip ospf 10 area 0
+ ip helper-address 10.0.1.1 
  no shutdown
+ 
+
 
 ip name-server 10.10.10.10
 ntp server 10.10.10.100
