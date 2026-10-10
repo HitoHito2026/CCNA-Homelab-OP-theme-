@@ -146,7 +146,7 @@ interface vlan 40
 
 
 ip name-server 10.10.10.10
-ntp server 10.10.10.100
+ntp server 10.0.1.1
 no cdp run
 lldp run
 spanning-tree mode rapid-pvst
@@ -220,7 +220,7 @@ interface range g2/11-20
 
 ip domain-name Strawhats.com
 ip name-server 10.10.10.10
-ntp server 10.10.10.100
+ntp server 10.0.1.1
 no cdp run
 lldp run
 spanning-tree mode rapid-pvst
@@ -297,7 +297,7 @@ interface range g2/11-20
  shutdown
 
 ip name-server 10.10.10.10
-ntp server 10.10.10.100
+ntp server 10.0.1.1
 no cdp run
 lldp run
 spanning-tree mode rapid-pvst
