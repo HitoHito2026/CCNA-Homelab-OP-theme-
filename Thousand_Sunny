@@ -34,7 +34,7 @@ router ospf 10
 
 ipv6 unicast-routing
 interface g0/1
- ip address 10.1.1.1 255.255.255.252
+ ip address 203.10.10.10 255.255.255.252
  ip nat outside
  ipv6 address 2001:db8:A1::1/64
  ip ospf 10 area 0  
