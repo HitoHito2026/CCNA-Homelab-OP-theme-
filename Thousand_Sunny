@@ -25,6 +25,7 @@ line vty 0 15
 
 interface loopback0
  ip address 10.0.0.1 255.255.255.255
+ ip ospf 10 area 0
 
 router ospf 10
  router-id 10.0.0.1
