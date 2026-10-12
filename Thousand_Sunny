@@ -132,7 +132,7 @@ router ospf 10
  passive-interface Loopback0
  network 10.0.0.0 0.0.0.255 area 0
 
-interface range g2/11-20
+interface range g1/0/11-24
  shutdown
 
 vlan 40
