@@ -194,7 +194,7 @@ vlan 40
 vlan 50
  name Compass
 
-interface g1/1
+interface g1/0/3
  description Link_to_AS1
  switchport mode trunk
  switchport nonegotiate
