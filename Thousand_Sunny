@@ -290,7 +290,7 @@ interface f0/1
 
 ip arp inspection vlan 40,50
 ip arp inspection validate src-mac dst-mac ip
-interface g1/1
+interface g0/1
   ip arp inspection  trust
 
 interface range fa0/13-24
