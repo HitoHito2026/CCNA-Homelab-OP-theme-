@@ -54,7 +54,7 @@ interface g0/1
  no shutdown
 
 access-list 10 permit 10.0.10.0 0.0.0.255
-ip nat inside source list 10 interface g0/1 overload
+ip nat inside source list 10 interface g0/0 overload
 
 ip dhcp excluded-address 10.0.10.1 10.0.10.10
 ip dhcp pool SHFleet_PC
