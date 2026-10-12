@@ -60,7 +60,7 @@ ip dhcp excluded-address 10.0.10.1 10.0.10.10
 ip dhcp pool SHFleet_PC
  network 10.0.10.0 255.255.255.0
  default-router 10.0.10.1
- dns-server 10.10.10.10
+ dns-server 1.1.1.1
  domain-name Strawhats.com
 
 ntp master 10
