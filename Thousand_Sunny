@@ -215,7 +215,7 @@ interface port-channel 10
  switchport trunk native vlan 1000
  switchport trunk allowed vlan 30,70,40,50
 
-interface range g2/11-20
+interface range g1/0/11-24
  shutdown
 
 ip domain-name Strawhats.com
