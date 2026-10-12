@@ -105,7 +105,7 @@ interface vlan 99
  ip address 10.0.99.1 255.255.255.0
  ip ospf 10 area 0
  no shutdown
-interface g0/0
+interface g1/0/1
  switchport mode access
  switchport access vlan 99
 
@@ -143,8 +143,6 @@ interface vlan 40
  ip helper-address 10.0.1.1 
  no shutdown
  
-
-
 ip name-server 10.10.10.10
 ntp server 10.0.1.1
 no cdp run
