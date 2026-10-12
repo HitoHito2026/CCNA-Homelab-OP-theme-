@@ -202,7 +202,7 @@ interface g1/0/3
  switchport trunk allowed vlan 40,50
  no shutdown
 
-interface range g1/2-4
+interface range g1/0/4-10
  switchport mode trunk
  switchport nonegotiate
  switchport trunk native vlan 1000
