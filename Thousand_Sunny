@@ -259,7 +259,7 @@ vlan 50
 vlan 1000
  name NATIVE
 
-interface g1/1
+interface g0/1
  description Link_to_DS1
  switchport mode trunk
  switchport nonegotiate
@@ -283,7 +283,7 @@ ip dhcp snooping
 ip dhcp snooping vlan 40,50
 no ip dhcp snooping information option
 
-interface g1/1
+interface g0/1
   ip dhcp snooping trust
 interface f0/1
  ip dhcp snooping limit rate 16
@@ -293,7 +293,7 @@ ip arp inspection validate src-mac dst-mac ip
 interface g1/1
   ip arp inspection  trust
 
-interface range g2/11-20
+interface range fa0/13-24
  shutdown
 
 ip name-server 10.10.10.10
