@@ -29,11 +29,11 @@ interface loopback0
 router ospf 10
  router-id 10.0.0.1
  passive-interface Loopback0
- passive-interface g0/1
+ passive-interface g0/0
  network 10.0.0.0 0.0.0.255 area 0
 
 ipv6 unicast-routing
-interface g0/1
+interface g0/0
  ip address 203.0.113.10 255.255.255.252
  ip nat outside
  ipv6 address 2001:db8:A1::1/64
