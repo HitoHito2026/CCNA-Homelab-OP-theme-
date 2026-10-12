@@ -44,7 +44,7 @@ ip access-list extended Nika
  deny tcp any any eq 23
  permit ip any any
 
-interface g0/0
+interface g0/1
  description Link_to_CS1
  ip address 10.0.1.1 255.255.255.252
  ip access-group Nika in
