@@ -92,7 +92,7 @@ line vty 0 15
  logging synchronous
 
 ip routing
-interface g1/1
+interface g1/0/1
  description Link_to_Router_ThousandSunny
  no switchport
  ip address 10.0.1.2 255.255.255.252
@@ -105,7 +105,7 @@ interface vlan 99
  ip address 10.0.99.1 255.255.255.0
  ip ospf 10 area 0
  no shutdown
-interface g1/0/1
+interface g1/0/2
  switchport mode access
  switchport access vlan 99
 
