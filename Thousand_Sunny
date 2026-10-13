@@ -234,6 +234,7 @@ username Nami secret Tangerine
 
 ip domain-name Strawhats.com
 crypto key generate rsa
+4096
 ip ssh version 2
 access-list 1 permit 10.0.0.0 0.0.255.255
 line console 0
