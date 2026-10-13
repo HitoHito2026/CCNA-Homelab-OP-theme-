@@ -12,6 +12,7 @@ username Luffy secret MonkeyD
 access-list 1 permit 10.0.0.0 0.0.255.255
 ip domain-name Strawhats.com
 crypto key generate rsa
+4096
 ip ssh version 2
 line console 0
  exec-timeout 30
@@ -78,6 +79,7 @@ username Zoro algorithm-type scrypt secret Wano
 
 ip domain-name Strawhats.com
 crypto key generate rsa
+4096
 ip ssh version 2
 access-list 1 permit 10.0.0.0 0.0.255.255
 line console 0
@@ -160,6 +162,7 @@ username Sanji secret Vinsmoke
 
 ip domain-name Strawhats.com
 crypto key generate rsa
+4096
 ip ssh version 2
 access-list 1 permit 10.0.0.0 0.0.255.255
 line console 0
