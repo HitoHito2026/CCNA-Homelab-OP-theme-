@@ -250,9 +250,6 @@ line vty 0 15
  access-class 1 in
  logging synchronous
 
-interface loopback0
- ip address 10.0.0.4 255.255.255.255
-
 vlan 40
  name Weather_egg
 vlan 50
