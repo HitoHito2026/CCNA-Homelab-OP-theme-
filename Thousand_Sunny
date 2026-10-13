@@ -263,7 +263,6 @@ interface g0/1
  switchport nonegotiate
  switchport trunk native vlan 1000
  switchport trunk allowed vlan 40,50
- no shutdown
 
 interface f0/1
  switchport mode access
