@@ -98,6 +98,7 @@ interface g1/0/1
  no switchport
  ip address 10.0.1.2 255.255.255.252
  ip ospf 10 area 0
+ no shutdown
 ip route 0.0.0.0 0.0.0.0 10.0.1.1
 
 vlan 99
@@ -201,7 +202,6 @@ interface g1/0/3
  switchport nonegotiate
  switchport trunk native vlan 1000
  switchport trunk allowed vlan 40,50
- no shutdown
 
 interface range g1/0/4-10
  switchport mode trunk
