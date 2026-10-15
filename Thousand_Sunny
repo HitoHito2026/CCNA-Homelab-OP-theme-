@@ -98,7 +98,6 @@ interface g1/0/1
  no switchport
  ip address 10.0.1.2 255.255.255.252
  ip ospf 10 area 0
- no shutdown
 ip route 0.0.0.0 0.0.0.0 10.0.1.1
 
 vlan 99
@@ -110,7 +109,6 @@ interface vlan 99
 interface g1/0/2
  switchport mode access
  switchport access vlan 99
- no shutdown 
 
 vlan 1000
  name NATIVE
