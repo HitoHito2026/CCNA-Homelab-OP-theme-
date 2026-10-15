@@ -28,7 +28,6 @@ interface loopback0
  ip address 10.0.0.1 255.255.255.255
  ip ospf 10 area 0
 
-ip routing
 router ospf 10
  router-id 10.0.0.1
  passive-interface Loopback0
@@ -179,6 +178,7 @@ line vty 0 15
 interface loopback0
  ip address 10.0.0.3 255.255.255.255
 
+ip routing
 router ospf 10
  router-id 10.0.0.3
  passive-interface Loopback0
@@ -219,7 +219,6 @@ interface port-channel 10
 interface range g1/0/11-24
  shutdown
 
-ip domain-name Strawhats.com
 ip name-server 1.1.1.1
 ntp server 10.0.1.1
 no cdp run
