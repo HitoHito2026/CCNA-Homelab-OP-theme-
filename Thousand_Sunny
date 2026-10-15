@@ -110,6 +110,7 @@ interface vlan 99
 interface g1/0/2
  switchport mode access
  switchport access vlan 99
+ no shutdown 
 
 vlan 1000
  name NATIVE
