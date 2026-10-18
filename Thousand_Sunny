@@ -105,7 +105,6 @@ vlan 99
  name Zoro_Directions
 interface vlan 99
  ip address 10.0.99.1 255.255.255.0
- ip ospf 10 area 0
  no shutdown
 interface g1/0/2
  switchport mode access
@@ -113,18 +112,6 @@ interface g1/0/2
 
 vlan 1000
  name NATIVE
-interface range g1/0/4-10
- switchport mode trunk
- switchport nonegotiate
- switchport trunk native vlan 1000
- switchport trunk allowed vlan 30,70,40,50
- channel-group 10 mode active
-
-interface port-channel 10
- switchport mode trunk
- switchport nonegotiate
- switchport trunk native vlan 1000
- switchport trunk allowed vlan 30,70,40,50
 
 interface loopback0
  ip address 10.0.0.2 255.255.255.255
