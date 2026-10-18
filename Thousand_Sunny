@@ -191,7 +191,7 @@ interface g1/0/3
  switchport trunk native vlan 1000
  switchport trunk allowed vlan 40,50
 
-interface range g1/0/4-10
+interface range g1/0/4-5
  switchport mode trunk
  switchport nonegotiate
  switchport trunk native vlan 1000
