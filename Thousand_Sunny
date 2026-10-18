@@ -191,18 +191,18 @@ interface g1/0/3
  switchport trunk native vlan 1000
  switchport trunk allowed vlan 40,50
 
+interface port-channel 10
+ switchport mode trunk
+ switchport nonegotiate
+ switchport trunk native vlan 1000
+ switchport trunk allowed vlan 30,70,40,50
+
 interface range g1/0/4-6
  switchport mode trunk
  switchport nonegotiate
  switchport trunk native vlan 1000
  switchport trunk allowed vlan 30,70,40,50
  channel-group 10 mode active
-
-interface port-channel 10
- switchport mode trunk
- switchport nonegotiate
- switchport trunk native vlan 1000
- switchport trunk allowed vlan 30,70,40,50
 
 interface range g1/0/11-24
  description ##Not in use## 
