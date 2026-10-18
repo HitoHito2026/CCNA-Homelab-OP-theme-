@@ -191,6 +191,11 @@ interface g1/0/3
  switchport trunk native vlan 1000
  switchport trunk allowed vlan 40,50
 
+interface GigabitEthernet1/1/3
+ no switchport
+ ip address 10.0.1.3 255.255.255.248
+ description Link_to_CS1
+
 interface port-channel 10
  switchport mode trunk
  switchport nonegotiate
