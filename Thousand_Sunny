@@ -172,7 +172,7 @@ router ospf 10
  router-id 10.0.0.3
  passive-interface Loopback0
  network 10.0.0.0 0.0.0.255 area 0
-
+ network 10.0.1.0 0.0.0.7 area 0
 vlan 30
  name Navigator
 vlan 70
