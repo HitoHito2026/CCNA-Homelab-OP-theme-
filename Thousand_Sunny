@@ -107,7 +107,7 @@ vlan 99
  name Zoro_Directions_Mgmt
 interface vlan 99
  ip address 10.0.99.1 255.255.255.0
- no shutdown
+
 interface g1/0/2
  switchport mode access
  switchport access vlan 99
